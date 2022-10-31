@@ -195,13 +195,13 @@
               types = ["file"];
               files = "\\.((txt)|(md)|(nix)|\\d)$";
             };
-            mdformat = {
-              enable = true;
-              name = "mdformat";
-              description = "An opinionated Markdown formatter";
-              entry = "${jupyterlab}/bin/mdformat .";
-              types = ["file" "text" "markdown"];
-            };
+            # mdformat = {
+            #   enable = true;
+            #   name = "mdformat";
+            #   description = "An opinionated Markdown formatter";
+            #   entry = "${jupyterlab}/bin/mdformat .";
+            #   types = ["file" "text" "markdown"];
+            # };
           };
           excludes = ["^\\.jupyter/"]; # JUPYTERLAB_DIR
         };
