@@ -195,20 +195,26 @@
               types = ["file"];
               files = "\\.((txt)|(md)|(nix)|\\d)$";
             };
-            # mdformat = {
-            #   enable = true;
-            #   name = "mdformat";
-            #   description = "An opinionated Markdown formatter";
-            #   entry = "${jupyterlab}/bin/mdformat .";
-            #   types = ["file" "text" "markdown"];
-            # };
+            mdformat = {
+              enable = true;
+              name = "mdformat";
+              description = "An opinionated Markdown formatter";
+              entry = "${markdownHook}/bin/mdformat .";
+              types = ["file" "text" "markdown"];
+            };
           };
           excludes = ["^\\.jupyter/"]; # JUPYTERLAB_DIR
         };
 
+        markdownHook = pkgs.poetry2nix.mkPoetryEnv rec {
+          python = pkgs.python3;
+          projectDir = self + "/environments/markdown";
+          overrides = pkgs.poetry2nix.overrides.withDefaults (import (projectDir + "/overrides.nix"));
+        };
+
         jupyterlab' = pkgs.poetry2nix.mkPoetryEnv {
           python = pkgs.python3;
-          projectDir = self; # TODO: only include relevant files/folders
+          projectDir = self;
           overrides = pkgs.poetry2nix.overrides.withDefaults (import ./overrides.nix);
         };
 
