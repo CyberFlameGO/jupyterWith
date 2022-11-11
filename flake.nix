@@ -15,6 +15,10 @@
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.npmlock2nix.url = "github:nix-community/npmlock2nix";
   inputs.npmlock2nix.flake = false;
+  inputs.opam-nix.url = "github:tweag/opam-nix";
+  inputs.opam-nix.inputs.flake-compat.follows = "flake-compat";
+  inputs.opam-nix.inputs.flake-utils.follows = "flake-utils";
+  inputs.opam-nix.inputs.nixpkgs.follows = "nixpkgs";
   inputs.pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   inputs.pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
   inputs.pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +36,7 @@
     flake-compat,
     flake-utils,
     npmlock2nix,
+    opam-nix,
     pre-commit-hooks,
     poetry2nix,
     rust-overlay,
